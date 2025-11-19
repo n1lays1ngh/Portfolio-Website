@@ -220,3 +220,33 @@ html, body {
   height: 100%; /* Ensure it covers full height */
   width: 100%;
 }
+
+/* @media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: var(--bg-nav);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: 0 0 1rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .navbar-nav {
+    gap: 0.5rem;
+  }
+  
+  .navbar-nav .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .navbar-nav .btn-teal {
+    width: 100%;
+    display: block;
+  }
+}
+ */
