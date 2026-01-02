@@ -221,6 +221,28 @@ html, body {
   width: 100%;
 }
 
+/* Glassmorphism fallback */
+.bg-glass {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Hover effect for Nav Links */
+.hover-text-white:hover {
+  color: #ffffff !important;
+}
+
+/* Text Gradient for Logo */
+/* Text Gradient for Logo */
+.text-gradient {
+  background: linear-gradient(to right, #14b8a6, #2dd4bf);
+  -webkit-background-clip: text;
+  background-clip: text; /* Standard property for compatibility */
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback for browsers that support background-clip: text but not text-fill-color */
+}
+
 /* @media (max-width: 991.98px) {
   .navbar-collapse {
     background-color: var(--bg-nav);
