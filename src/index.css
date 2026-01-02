@@ -272,3 +272,37 @@ html, body {
   }
 }
  */
+
+ /* Animation Keyframes */
+@keyframes float {
+  0% { transform: translate(-50%, -50%) translateY(0px); }
+  50% { transform: translate(-50%, -50%) translateY(-15px); }
+  100% { transform: translate(-50%, -50%) translateY(0px); }
+}
+
+.floating-icon {
+  animation: float 6s ease-in-out infinite;
+  z-index: 3;
+}
+
+/* Glow Effects */
+.glow-teal { box-shadow: 0 0 20px rgba(20, 184, 166, 0.4); }
+.glow-purple { box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
+
+/* Gradient Text */
+.text-gradient-purple-blue {
+  background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Glassmorphism Background Helper */
+.blur-3xl { filter: blur(80px); }
+
+/* Replace the dirty black shadow with a subtle ambient glow */
+.glass-glow {
+  box-shadow: 0 0 40px rgba(20, 184, 166, 0.15); /* Teal glow */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Crisp border for definition */
+}
