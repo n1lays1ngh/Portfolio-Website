@@ -25,42 +25,64 @@ export const DATA = {
     }
   ],
   skills: {
+    // --- MARQUEE (Standard Stack) ---
     technical: [
       { name: "Python", icon: "devicon-python-plain" },
-      { name: "FastAPI", icon: "devicon-fastapi-plain" },
-      { name: "C++", icon: "devicon-cplusplus-plain" },
-      { name: "Git", icon: "devicon-git-plain" },
-      { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
-      { name: "SQL", icon: "devicon-mysql-plain" }, 
-      { name: "Docker", icon: "devicon-docker-plain" },
-      { name: "Linux", icon: "devicon-linux-plain" },
-      { name: "HTML", icon: "devicon-html5-plain" },
-      { name: "CSS", icon: "devicon-css3-plain" },
       { name: "TensorFlow", icon: "devicon-tensorflow-original" },
-      { name: "Scikit Learn", icon: "devicon-scikitlearn-plain" },
+      { name: "FastAPI", icon: "devicon-fastapi-plain" },
+      { name: "Pandas", icon: "devicon-pandas-plain" },
+      { name: "NumPy", icon: "devicon-numpy-plain" },
+      { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
+      { name: "Docker", icon: "devicon-docker-plain" },
+      { name: "Git", icon: "devicon-git-plain" },
+      { name: "Linux", icon: "devicon-linux-plain" },
+      { name: "React", icon: "devicon-react-original" },
     ],
-    soft: [
-      "Problem Solving",
-      "Team Leadership",
-      "Critical Thinking",
-      "Agile Methodologies",
-      "Public Speaking"
+    
+    // --- ENGINEERING COMPETENCIES ---
+    domainExpertise: [
+      { 
+        title: "Generative AI", 
+        // Added Vector DBs here
+        desc: "Architecting RAG systems, autonomous agents, and context-aware LLM applications.",
+        icon: "Brain",
+        tags: ["LangChain", "Ollama", "ChromaDB", "HuggingFace"] 
+      },
+      { 
+        title: "Deep Learning", 
+        // Added Plotly/Seaborn here
+        desc: "Designing neural networks (CNNs/RNNs) and implementing transformer models from scratch.",
+        icon: "Cpu",
+        tags: ["TensorFlow", "Computer Vision", "Plotly"]
+      },
+      { 
+        title: "Math Foundations", 
+        desc: "Applying Linear Algebra, Calculus, and Probability to optimize algorithms and model performance.",
+        icon: "Sigma", 
+        tags: ["Linear Algebra", "Statistics", "Optimization"]
+      },
+      { 
+        title: "Backend Systems", 
+        // Added Pytest here
+        desc: "Building scalable APIs and managing relational databases for data-intensive applications.",
+        icon: "Server",
+        tags: ["FastAPI", "PostgreSQL", "Pytest", "System Design"]
+      }
     ],
+    
+    // --- CONTEXT ---
     languages: [
       { name: "English", level: "Professional Working" },
       { name: "Hindi", level: "Native" },
-      
     ],
     coursework: [
+      "Deep Learning & Neural Networks",
+      "Linear Algebra & Probability",
       "Data Structures & Algorithms",
-      "Operating Systems",
+      "Artificial Intelligence",
       "Database Management Systems",
       "Object Oriented Programming",
-      "Computer Networks",
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Software Engineering",
-      "Conversational Ai : Accelerated Data Science"
+      "Operating Systems"
     ]
   },
   experience: [
@@ -80,56 +102,83 @@ export const DATA = {
     
   ],
   projects: [
-    {
-      title: "Mental-Health-Predictor-App",
-      description: "A Streamlit app that predicts an individual’s need for mental health treatment using CatBoost, with a focus on interpretability and user-friendly insights.",
-      tags: [
-        "Python",
-        "Data Science",
-        "Machine Learning",
-        "Predictive Analytics",
-        "CatBoost",
-        "Streamlit"
-      ],
-      img: "/Project1.png",
-      demoUrl: "https://mental-health-predictor-app-n1lays1ngh.streamlit.app/", 
-      repoUrl: "https://github.com/n1lays1ngh/Mental-Health-Predictor-App"
-    },
-      
-      
-    {
-      title: "SkillEval.ai",
-      description: "SkillEvalAI is an intelligent assistant that analyzes your GitHub, skills, and projects to score your job readiness, highlight skill gaps, give actionable feedback, and generate a personalized 30-day learning roadmap.",
-      tags: [
-      "Python",
-      "FastAPI",
-      "Vercel",
-      "LangChain",
-      "GenAI"
-    ],
-      img: "/Project2.png",
-      demoUrl: "https://skill-eval-ai-yozc.vercel.app/", 
-      repoUrl: "https://github.com/n1lays1ngh/SkillEval.ai"
-    },
-    {
-      title: "KHABRI-The all in one news agent",
-      description: "Khabri is an AI-powered news analysis assistant that summarizes articles, identifies key insights, and delivers clear, unbiased breakdowns using advanced NLP and LLM-driven reasoning.",
-      tags: [
-        "NLP",
-        "LLMs",
-        "LangChain",
-        "FastAPI",
-        "News Analytics",
-        "Text Summarization",
-        "Python",
-        "Machine Learning",
-        "AI Assistant"
-      ],
-      img: "/Project3.png",
-      demoUrl: "https://khabri-rho.vercel.app/", 
-      repoUrl: "https://github.com/n1lays1ngh/KHABRI"
-    }
-  ],
+  // --- EXISTING PROJECTS ---
+  {
+    title: "Mental-Health-Predictor-App",
+    description: "A Streamlit app that predicts an individual’s need for mental health treatment using CatBoost, with a focus on interpretability and user-friendly insights.",
+    tags: ["Python", "Data Science", "Machine Learning", "Predictive Analytics", "CatBoost", "Streamlit"],
+    img: "/Project1.png",
+    demoUrl: "https://mental-health-predictor-app-n1lays1ngh.streamlit.app/", 
+    repoUrl: "https://github.com/n1lays1ngh/Mental-Health-Predictor-App"
+  },
+  {
+    title: "SkillEval.ai",
+    description: "SkillEvalAI is an intelligent assistant that analyzes your GitHub, skills, and projects to score your job readiness, highlight skill gaps, and generate a learning roadmap.",
+    tags: ["Python", "FastAPI", "Vercel", "LangChain", "GenAI", "Backend"],
+    img: "/Project2.png",
+    demoUrl: "https://skill-eval-ai-yozc.vercel.app/", 
+    repoUrl: "https://github.com/n1lays1ngh/SkillEval.ai"
+  },
+  {
+    title: "KHABRI-The all in one news agent",
+    description: "Khabri is an AI-powered news analysis assistant that summarizes articles, identifies key insights, and delivers clear breakdowns using advanced NLP.",
+    tags: ["NLP", "LLMs", "LangChain", "FastAPI", "GenAI", "Backend"],
+    img: "/Project3.png",
+    demoUrl: "https://khabri-rho.vercel.app/", 
+    repoUrl: "https://github.com/n1lays1ngh/KHABRI"
+  },
+
+  // --- NEW PROJECTS ---
+
+  {
+    title: "RAG Chatbot with Local LLM",
+    description: "A privacy-focused RAG chatbot running entirely locally. It allows users to chat with their documents using Ollama for LLM inference and a React+FastAPI stack.",
+    tags: ["GenAI", "RAG", "LLMs", "FastAPI", "React", "Ollama", "Backend"],
+    img: "/Project4.png", // Update with your image
+    demoUrl: null, // Assuming no live demo for local LLM
+    repoUrl: "https://github.com/n1lays1ngh/RAG-CHATBOT"
+  },
+  {
+    title: "Delhi Air Quality Prediction",
+    description: "A time-series forecasting model that analyzes historical pollution data to predict AQI levels in Delhi, helping visualize trends and environmental impact.",
+    tags: ["Data Science", "Machine Learning", "Python", "Predictive Analytics"],
+    img: "/Project5.png", // Update with your image
+    demoUrl: null, 
+    repoUrl: "https://github.com/n1lays1ngh/Delhi-Air-Quality-Prediction"
+  },
+  {
+    title: "Image Recognition (CIFAR-10)",
+    description: "A Deep Learning model using CNNs to classify images from the CIFAR-10 dataset with high accuracy, demonstrating computer vision fundamentals.",
+    tags: ["Machine Learning", "Deep Learning", "CNN", "Computer Vision", "Python"],
+    img: "/Project6.png", // Update with your image
+    demoUrl: null, 
+    repoUrl: "https://github.com/n1lays1ngh/Image-Recognition-on-CIFAR-10-Dataset"
+  },
+  {
+    title: "Spam Classifier",
+    description: "A text classification system utilizing NLP techniques to detect and filter spam messages efficiently, ensuring cleaner communication channels.",
+    tags: ["Machine Learning", "NLP", "Classification", "Python"],
+    img: "/Project7.png", // Update with your image
+    demoUrl: "https://spamclassifier-nilaysingh.streamlit.app/", 
+    repoUrl: "https://github.com/n1lays1ngh/SpamClassifier"
+  },
+  {
+    title: "Bike Rental System",
+    description: "A comprehensive DBMS project managing bike inventory, customer data, and rental transactions with complex SQL queries and structured database design.",
+    tags: ["Backend", "DBMS", "SQL", "Database Management"],
+    img: "/Project8.png", // Update with your image
+    demoUrl: null, 
+    repoUrl: "https://github.com/n1lays1ngh/Bike_Rental_System"
+  },
+  {
+    title: "Superconductivity Regression",
+    description: "A statistical regression analysis project predicting critical temperatures of superconductors based on chemical and physical properties.",
+    tags: ["Data Science", "Machine Learning", "Regression", "Python"],
+    img: "/Project9.png", // Update with your image
+    demoUrl: null, 
+    repoUrl: "https://github.com/n1lays1ngh/Superconductivity-Regression"
+  }
+],
   certificates: [
     {
       title: "Supervised Machine Learning: Regression and Classification",
