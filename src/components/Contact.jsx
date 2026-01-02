@@ -1,8 +1,9 @@
-import React from 'react';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Copy, Check } from 'lucide-react';
 import { DATA } from '../data';
 
-// --- Custom Social Icons (SVG) ---
+// --- Custom Icons ---
 const Github = ({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
 );
@@ -19,57 +20,114 @@ const LeetCode = ({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.156a5.3 5.3 0 0 0-.96-.088h-.002zm-2.99 7.976c-.25.014-.494.074-.721.187a1.368 1.368 0 0 0-.376 2.26l.006.006 4.622 4.579c.545.526 1.413.516 1.943-.029a1.377 1.377 0 0 0 .012-1.94L11.356 8.46a1.357 1.357 0 0 0-.863-.484zm7.333 2.563c-.432 0-.855.145-1.205.438a1.38 1.38 0 0 0-.24 1.941l1.983 2.444a3.033 3.033 0 0 1 .525 2.371 2.99 2.99 0 0 1-1.862 2.27 3.013 3.013 0 0 1-3.271-.869l-4.263-4.18a2.692 2.692 0 0 1-.681-1.169c-.021-.116-.035-.234-.041-.353a1.374 1.374 0 0 0-2.748.092c.021.414.092.822.215 1.215.235.749.62 1.43 1.125 1.996l4.262 4.18c2.198 2.155 5.864 2.23 8.154.17 2.29-2.059 2.347-5.592.132-7.727l-1.986-2.446a1.366 1.366 0 0 0-1.145-.533h-.169z"/></svg>
 );
 
-const Contact = () => (
-  <section id="contact" className="py-6 bg-dark-section">
-    <div className="container">
-      <div className="text-center mb-5">
-        <h2 className="fw-bold text-white">Get in Touch</h2>
-        <p className="text-secondary">Have a question? Feel free to reach out!</p>
-      </div>
+const Contact = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(DATA.contact.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <section id="contact" className="py-5 position-relative overflow-hidden bg-dark-section">
       
-      <div className="row justify-content-center">
-        <div className="col-lg-8 text-center">
-          
-          {/* REDESIGNED: Smaller, compact contact box */}
-          <div className="d-inline-flex flex-wrap justify-content-center gap-3 gap-md-4 mb-5">
-             <a href={`mailto:${DATA.contact.email}`} className="d-flex align-items-center gap-2 text-decoration-none px-4 py-2 bg-dark-card border border-secondary border-opacity-25 rounded-pill hover-bg-darker transition-all">
-                <Mail size={18} className="text-teal" />
-                <span className="text-white small fw-medium">{DATA.contact.email}</span>
-             </a>
-             
-             {/* <a href={`tel:${DATA.contact.phone}`} className="d-flex align-items-center gap-2 text-decoration-none px-4 py-2 bg-dark-card border border-secondary border-opacity-25 rounded-pill hover-bg-darker transition-all">
-                <Phone size={18} className="text-teal" />
-                <span className="text-white small fw-medium">{DATA.contact.phone}</span>
-             </a> */}
-          </div>
-
-          {/* Social Icons */}
-          <h6 className="text-white mb-4 small text-uppercase tracking-wide opacity-75">Connect on Socials</h6>
-          <div className="d-flex justify-content-center gap-4">
-             {[
-               { Icon: Github, link: DATA.socials.github, color: "hover:text-white" },
-               { Icon: Linkedin, link: DATA.socials.linkedin, color: "hover:text-blue-400" },
-               { Icon: Twitter, link: DATA.socials.twitter, color: "hover:text-sky-400" },
-               { Icon: Instagram, link: DATA.socials.instagram, color: "hover:text-pink-500" },
-               { Icon: LeetCode, link: DATA.socials.leetcode, color: "hover:text-warning" },
-             ].map((item, index) => (
-               <a 
-                 key={index} 
-                 href={item.link} 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className={`text-secondary transition-transform hover-scale ${item.color}`}
-                 style={{ transition: '0.3s' }}
-               >
-                 <item.Icon size={28} />
-               </a>
-             ))}
-          </div>
-
-        </div>
+      {/* --- Ambient Background --- */}
+      <div className="position-absolute top-50 start-50 translate-middle w-100 h-100 opacity-20"
+           style={{ background: 'radial-gradient(circle at center, rgba(20, 184, 166, 0.08) 0%, transparent 60%)' }}>
       </div>
-    </div>
-  </section>
-);
+
+      <div className="container position-relative z-1 text-center">
+        
+        {/* --- 1. HEADLINE --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-5"
+        >
+          <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-dark-card border border-teal border-opacity-25 mb-4 shadow-sm">
+             <div className="rounded-circle bg-teal animate-pulse" style={{width: '8px', height: '8px', boxShadow: '0 0 10px rgba(20, 184, 166, 0.5)'}}></div>
+             <span className="small fw-bold tracking-wide text-uppercase text-teal">Inbox Open</span>
+          </div>
+          
+          <h2 className="display-4 fw-bold text-white mb-3">
+            Ready to create something <span className="text-gradient">extraordinary?</span>
+          </h2>
+          <p className="text-secondary fs-5" style={{ maxWidth: '600px', margin: '0 auto' }}>
+            Whether it's a new AI project, a freelance inquiry, or just a virtual coffee, I'm here for it.
+          </p>
+        </motion.div>
+
+        {/* --- 2. THE HERO EMAIL --- */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="my-5"
+        >
+          <button 
+            onClick={handleCopy}
+            className="group btn-unstyled position-relative d-inline-block transition-all hover-scale"
+          >
+            <h1 className="fw-bold transition-all text-break email-text" 
+                style={{ 
+                  fontSize: 'clamp(2rem, 5vw, 4.5rem)', 
+                  letterSpacing: '-1px',
+                  color: '#e5e7eb', // Standard light gray
+                  lineHeight: 1.1,
+                  textShadow: '0 0 20px rgba(0,0,0,0.5)'
+                }}
+            >
+              {DATA.contact.email}
+            </h1>
+            
+            <div className="mt-3 d-flex align-items-center justify-content-center gap-2 text-secondary opacity-50 group-hover-opacity-100 transition-all">
+               {copied ? <Check size={18} className="text-teal" /> : <Copy size={18} />}
+               <span className="small text-uppercase tracking-widest fw-bold">
+                 {copied ? 'Copied to clipboard' : 'Click to copy'}
+               </span>
+            </div>
+          </button>
+        </motion.div>
+
+        {/* --- 3. THE SOCIAL DOCK (No Resume Button) --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="d-flex justify-content-center"
+        >
+          <div className="d-flex align-items-center gap-2 p-2 rounded-pill border border-secondary border-opacity-25 bg-dark-card shadow-lg glass-dock-dark">
+            
+            {[
+              { Icon: Mail, href: `mailto:${DATA.contact.email}`, label: "Email" },
+              { Icon: Linkedin, href: DATA.socials.linkedin, label: "LinkedIn" },
+              { Icon: Github, href: DATA.socials.github, label: "GitHub" },
+              { Icon: LeetCode, href: DATA.socials.leetcode, label: "LeetCode" }
+            ].map((social, index) => (
+               <a
+                 key={index}
+                 href={social.href}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="p-3 rounded-circle text-secondary hover-text-white hover-bg-teal transition-all position-relative group"
+                 title={social.label}
+               >
+                 <social.Icon size={24} />
+                 <span className="position-absolute top-0 end-0 translate-middle p-1 bg-teal rounded-circle opacity-0 group-hover-opacity-100 transition-all" style={{ width: '6px', height: '6px'}}></span>
+               </a>
+            ))}
+            
+          </div>
+        </motion.div>
+
+      </div>
+    </section>
+  );
+};
 
 export default Contact;

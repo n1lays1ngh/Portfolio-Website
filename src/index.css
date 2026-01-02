@@ -306,3 +306,67 @@ html, body {
   box-shadow: 0 0 40px rgba(20, 184, 166, 0.15); /* Teal glow */
   border: 1px solid rgba(255, 255, 255, 0.1); /* Crisp border for definition */
 }
+
+/* --- Elegant Contact Utilities --- */
+
+.glass-dock {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.btn-unstyled {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Gradient Text for the Email */
+.group:hover .group-hover-text-teal {
+  background: none;
+  -webkit-text-fill-color: #14b8a6; /* Teal color on hover */
+  color: #14b8a6;
+  text-shadow: 0 0 30px rgba(20, 184, 166, 0.3);
+}
+
+.text-transparent {
+  color: transparent;
+}
+
+/* --- Dark Obsidian Dock --- */
+.glass-dock-dark {
+  background: rgba(10, 10, 10, 0.6); /* Dark semi-transparent */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* --- Email Text Hover Effect --- */
+.email-text {
+  transition: all 0.3s ease;
+}
+
+.group:hover .email-text {
+  color: #14b8a6 !important; /* Teal */
+  text-shadow: 0 0 30px rgba(20, 184, 166, 0.4); /* Teal Glow */
+  transform: scale(1.02);
+}
+
+/* --- Pulse Animation for Inbox Badge --- */
+@keyframes pulse-teal {
+  0% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(20, 184, 166, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); }
+}
+
+.animate-pulse {
+  animation: pulse-teal 2s infinite;
+}
