@@ -12,8 +12,8 @@ export const DATA = {
       field: "Computer Engineering",
       school: "Thapar Institute of Engineering and Technology , Patiala",
       period: "Aug 2023 - Present",
-      cgpa: "8.85/10",
-      achievements: ["Executive Council Member SPICMACAY","Event Management","Leadership"]
+      cgpa: "8.91/10",
+      achievements: ["General Secretary SPICMACAY","Event Management","Leadership"]
     },
     {
       degree: "High School",
