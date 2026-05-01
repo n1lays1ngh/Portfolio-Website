@@ -5,7 +5,6 @@ import { DATA } from '../data';
 const s = {
   section: { background: '#0a0a0a', padding: '100px 0', width: '100%' },
   container: { maxWidth: '1300px', margin: '0 auto', padding: '0 24px' },
-  grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' },
 
   // Left
   eyebrow: { display: 'inline-flex', alignItems: 'center', gap: '10px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#00e5a0', marginBottom: '1.2rem' },
@@ -17,7 +16,6 @@ const s = {
   divider: { width: '40px', height: '2px', background: '#1e1e1e', margin: '1.4rem 0' },
 
   // Stats
-  statRow: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '1.8rem' },
   statBox: { background: '#131313', border: '1px solid #1e1e1e', borderRadius: '12px', padding: '14px 10px', textAlign: 'center' },
   statNum: { fontSize: '22px', fontWeight: 800, color: '#fff', marginBottom: '3px' },
   statAccent: { fontSize: '14px', color: '#00e5a0' },
@@ -51,7 +49,7 @@ const s = {
 
 const STATS = [
   { num: '8.91', accent: '/10', label: 'CGPA' },
-  {num:'2804',accent:' AIR',label:'GATE 2026 DA RANK'},
+  { num: '2804', accent: ' AIR', label: 'GATE 2026 DA RANK' },
   { num: '9',    accent: '+',   label: 'Projects' },
   { num: '1',    accent: '+',   label: 'Research paper' },
 ];
@@ -60,8 +58,49 @@ const TAGS = ['Python', 'Machine Learning', 'FastAPI', 'LangChain', 'RAG Systems
 
 const About = () => (
   <section id="about" style={s.section}>
+    <style>{`
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+      .about-stat-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 1.8rem;
+      }
+      .about-img-col {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        /* Show image ABOVE text on mobile */
+        .about-img-col {
+          order: -1;
+        }
+        .about-stat-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        #about {
+          padding: 60px 0 !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .about-stat-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    `}</style>
+
     <div style={s.container}>
-      <div style={s.grid}>
+      <div className="about-grid">
 
         {/* ── LEFT ── */}
         <div>
@@ -90,7 +129,7 @@ const About = () => (
           <div style={s.divider} />
 
           {/* Stats */}
-          <div style={s.statRow}>
+          <div className="about-stat-row">
             {STATS.map((st, i) => (
               <div key={i} style={s.statBox}>
                 <div style={s.statNum}>
@@ -119,8 +158,8 @@ const About = () => (
           </div>
         </div>
 
-        {/* ── RIGHT ── */}
-        <div>
+        {/* ── RIGHT / IMAGE ── */}
+        <div className="about-img-col">
           <div style={s.imgWrap}>
             <div style={s.imgDeco1} />
             <div style={s.imgDeco2} />

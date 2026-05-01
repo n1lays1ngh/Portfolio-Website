@@ -142,7 +142,7 @@ const Hero = () => {
                   <div style={{ padding: '18px 20px 8px', fontFamily: "'Fira Code', 'Cascadia Code', monospace", fontSize: '12.5px', lineHeight: 1.9 }}>
                     {[
                       <><span style={{color:'#c792ea'}}>class</span> <span style={{color:'#82aaff'}}>Engineer</span>:</>,
-                      <><span style={{color:'#546e7a',fontStyle:'italic'}}>  # Nilay Singh · 2025</span></>,
+                      <><span style={{color:'#546e7a',fontStyle:'italic'}}>  # Nilay Singh · 2026</span></>,
                       <>  <span style={{color:'#c792ea'}}>def</span> <span style={{color:'#82aaff'}}>__init__</span>(<span style={{color:'#f78c6c'}}>self</span>):</>,
                       <>    <span style={{color:'#f78c6c'}}>self</span>.<span style={{color:'#ffcb6b'}}>name</span>  = <span style={{color:'#c3e88d'}}>'Nilay Singh'</span></>,
                       <>    <span style={{color:'#f78c6c'}}>self</span>.<span style={{color:'#ffcb6b'}}>stack</span> = [<span style={{color:'#c3e88d'}}>'FastAPI'</span>, <span style={{color:'#c3e88d'}}>'GenAI'</span>, <span style={{color:'#c3e88d'}}>'RAG'</span>]</>,
