@@ -42,48 +42,47 @@ export const DATA = {
     // --- ENGINEERING COMPETENCIES ---
     domainExpertise: [
       { 
-        title: "Generative AI", 
-        // Added Vector DBs here
-        desc: "Architecting RAG systems, autonomous agents, and context-aware LLM applications.",
+        title: "Generative AI & LLM Engineering", 
+        desc: "Designing production-grade RAG pipelines, autonomous multi-agent systems, and context-aware LLM applications with retrieval-augmented memory and local inference.",
         icon: "Brain",
-        tags: ["LangChain", "Ollama", "ChromaDB", "HuggingFace"] 
+        tags: ["LangChain", "Ollama", "ChromaDB", "HuggingFace", "RAG", "Prompt Engineering"] 
       },
       { 
-        title: "Deep Learning", 
-        // Added Plotly/Seaborn here
-        desc: "Designing neural networks (CNNs/RNNs) and implementing transformer models from scratch.",
+        title: "Deep Learning & Computer Vision", 
+        desc: "Building and training CNNs, RNNs, and transformer architectures for image classification, time-series forecasting, and sequential modelling tasks.",
         icon: "Cpu",
-        tags: ["TensorFlow", "Computer Vision", "Plotly"]
+        tags: ["TensorFlow", "CNNs / RNNs", "Computer Vision", "Transformers", "Plotly"]
       },
       { 
-        title: "Math Foundations", 
-        desc: "Applying Linear Algebra, Calculus, and Probability to optimize algorithms and model performance.",
+        title: "Mathematical Foundations", 
+        desc: "Applying Linear Algebra, Multivariate Calculus, and Probability Theory to reason about model behaviour, derive gradients, and tune optimisation strategies.",
         icon: "Sigma", 
-        tags: ["Linear Algebra", "Statistics", "Optimization"]
+        tags: ["Linear Algebra", "Calculus", "Probability & Statistics", "Optimisation"]
       },
       { 
-        title: "Backend Systems", 
-        // Added Pytest here
-        desc: "Building scalable APIs and managing relational databases for data-intensive applications.",
+        title: "Backend & System Design", 
+        desc: "Engineering scalable REST APIs, relational database schemas, and containerised services for data-intensive, ML-backed production applications.",
         icon: "Server",
-        tags: ["FastAPI", "PostgreSQL", "Pytest", "System Design"]
+        tags: ["FastAPI", "PostgreSQL", "Docker", "Pytest", "System Design", "REST APIs"]
       }
     ],
-    
-    // --- CONTEXT ---
+
     languages: [
-      { name: "English", level: "Professional Working" },
-      { name: "Hindi", level: "Native" },
+      { name: "English", level: "Professional Working Proficiency" },
+      { name: "Hindi",   level: "Native / Full Professional Proficiency" },
     ],
+
     coursework: [
       "Deep Learning & Neural Networks",
-      "Linear Algebra & Probability",
+      "Linear Algebra & Probability Theory",
       "Data Structures & Algorithms",
       "Artificial Intelligence",
       "Database Management Systems",
-      "Object Oriented Programming",
-      "Operating Systems"
-    ]
+      "Object-Oriented Programming",
+      "Operating Systems",
+      "Computer Networks",
+      "Software Engineering"
+    ],
   },
   experience: [
     {
