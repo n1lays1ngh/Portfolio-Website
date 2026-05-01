@@ -4,6 +4,8 @@ import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
 import { DATA } from '../data';
 
+
+
 const Hero = () => {
   return (
     <section id="home" className="min-vh-100 d-flex align-items-center position-relative overflow-hidden bg-darker pt-5">
@@ -55,12 +57,12 @@ const Hero = () => {
               </h2>
               
               {/* Bio */}
-              <div className="lead text-secondary mb-5 fs-5" style={{ maxWidth: '650px' }}>
+              {/* <div className="lead text-secondary mb-5 fs-5" style={{ maxWidth: '650px' }}>
                 <p className="mb-0">
                   Pre-final year Computer Engineering student at <span className="text-white fw-semibold">Thapar University</span>. 
                   Specializing in transforming complex data into intelligent, user-centric applications.
                 </p>
-              </div>
+              </div> */}
               
               {/* Buttons */}
               <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
@@ -86,54 +88,87 @@ const Hero = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {/* Glassmorphism Card */}
-              <div className="floating-card p-4 rounded-4 shadow-lg position-relative z-2 border border-secondary border-opacity-25" 
-                   style={{ 
-                     background: 'rgba(20, 20, 25, 0.7)', 
-                     backdropFilter: 'blur(12px)' 
-                   }}>
-                
-                {/* Window Controls */}
-                <div className="d-flex gap-2 mb-4 opacity-50">
-                  <div className="rounded-circle bg-danger" style={{width:12, height:12}}></div>
-                  <div className="rounded-circle bg-warning" style={{width:12, height:12}}></div>
-                  <div className="rounded-circle bg-success" style={{width:12, height:12}}></div>
-                </div>
-                
-                {/* Python Code Snippet */}
-                <div className="font-monospace small" style={{ color: '#a9b7c6' }}>
-                  <div className="mb-1"><span style={{ color: '#cc7832' }}>class</span> <span style={{ color: '#ffc66d' }}>Engineer</span>:</div>
-                  <div className="mb-1 ps-3"><span style={{ color: '#cc7832' }}>def</span> <span style={{ color: '#ffc66d' }}>__init__</span>(self):</div>
-                  <div className="mb-1 ps-5">self.<span style={{ color: '#9876aa' }}>name</span> = <span style={{ color: '#6a8759' }}>'Nilay'</span></div>
-                  <div className="mb-1 ps-5">self.<span style={{ color: '#9876aa' }}>stack</span> = [</div>
-                  <div className="ps-5 ms-4" style={{ color: '#6a8759' }}>'FastAPI', 'React', 'GenAI'</div>
-                  <div className="mb-1 ps-5">]</div>
-                  <div className="mb-1 ps-3"><span style={{ color: '#cc7832' }}>def</span> <span style={{ color: '#ffc66d' }}>code</span>(self):</div>
-                  <div className="mb-1 ps-5"><span style={{ color: '#cc7832' }}>return</span> <span style={{ color: '#6a8759' }}>"Building the future..."</span></div>
-                </div>
+              <div style={{ position: 'relative' }}>
 
-                {/* Orbiting Icons */}
-                <div className="position-absolute top-0 start-100 translate-middle floating-icon" style={{animationDelay: '0s'}}>
-                  <div className="bg-dark-card p-3 rounded-circle border border-teal border-opacity-25 shadow-lg glow-teal">
-                    <Code2 className="text-teal" size={28} />
+                {/* Rings */}
+                <div style={{ position: 'absolute', width: '320px', height: '320px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', borderRadius: '50%', border: '1px solid rgba(0,229,160,0.06)', zIndex: 1, pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', width: '440px', height: '440px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', borderRadius: '50%', border: '1px solid rgba(124,111,255,0.04)', zIndex: 1, pointerEvents: 'none' }} />
+
+                {/* Chip — top left */}
+                <div style={{ position: 'absolute', top: '-16px', left: '-16px', zIndex: 3, background: '#0e0e0e', border: '1px solid #1e1e1e', borderRadius: '10px', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ width: '28px', height: '28px', borderRadius: '7px', background: 'rgba(0,229,160,0.1)', color: '#00e5a0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                   </div>
-                </div>
-                
-                <div className="position-absolute bottom-0 start-0 translate-middle floating-icon" style={{animationDelay: '1.5s'}}>
-                  <div className="bg-dark-card p-3 rounded-circle border border-purple border-opacity-25 shadow-lg glow-purple">
-                    <Cpu className="text-purple" size={28} />
+                  <div>
+                    <div style={{ fontSize: '11px', fontWeight: 700, color: '#ccc' }}>ML Engineer</div>
+                    <div style={{ fontSize: '10px', color: '#444' }}>FastAPI · LangChain</div>
                   </div>
                 </div>
 
-                 <div className="position-absolute top-0 start-0 translate-middle floating-icon" style={{animationDelay: '3s'}}>
-                  <div className="bg-dark-card p-3 rounded-circle border border-warning border-opacity-25 shadow-lg">
-                    <Terminal className="text-warning" size={24} />
+                {/* Chip — right middle */}
+                <div style={{ position: 'absolute', top: '50%', right: '-52px', transform: 'translateY(-80px)', zIndex: 3, background: '#0e0e0e', border: '1px solid #1e1e1e', borderRadius: '10px', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ width: '28px', height: '28px', borderRadius: '7px', background: 'rgba(239,159,39,0.1)', color: '#ef9f27', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                   </div>
+                  <div>
+                    <div style={{ fontSize: '11px', fontWeight: 700, color: '#ccc' }}>Research</div>
+                    <div style={{ fontSize: '10px', color: '#444' }}>Green AI · 2026</div>
+                  </div>
+                </div>
+
+                {/* Chip — bottom right */}
+                <div style={{ position: 'absolute', bottom: '-16px', right: '-16px', zIndex: 3, background: '#0e0e0e', border: '1px solid #1e1e1e', borderRadius: '10px', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ width: '28px', height: '28px', borderRadius: '7px', background: 'rgba(124,111,255,0.1)', color: '#9d8fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '11px', fontWeight: 700, color: '#ccc' }}>Open to Intern</div>
+                    <div style={{ fontSize: '10px', color: '#444' }}>Remote · On-site</div>
+                  </div>
+                </div>
+
+                {/* Code Card */}
+                <div style={{ background: '#0e0e0e', border: '1px solid #1e1e1e', borderRadius: '16px', overflow: 'hidden', position: 'relative', zIndex: 2 }}>
+
+                  {/* Title bar */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 16px', borderBottom: '1px solid #1a1a1a', background: '#111' }}>
+                    <div style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#ff5f57' }} />
+                    <div style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#ffbd2e' }} />
+                    <div style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#28ca42' }} />
+                    <span style={{ fontSize: '11px', color: '#333', marginLeft: 'auto', fontFamily: 'monospace' }}>engineer.py</span>
+                  </div>
+
+                  {/* Code body */}
+                  <div style={{ padding: '18px 20px 8px', fontFamily: "'Fira Code', 'Cascadia Code', monospace", fontSize: '12.5px', lineHeight: 1.9 }}>
+                    {[
+                      <><span style={{color:'#c792ea'}}>class</span> <span style={{color:'#82aaff'}}>Engineer</span>:</>,
+                      <><span style={{color:'#546e7a',fontStyle:'italic'}}>  # Nilay Singh · 2025</span></>,
+                      <>  <span style={{color:'#c792ea'}}>def</span> <span style={{color:'#82aaff'}}>__init__</span>(<span style={{color:'#f78c6c'}}>self</span>):</>,
+                      <>    <span style={{color:'#f78c6c'}}>self</span>.<span style={{color:'#ffcb6b'}}>name</span>  = <span style={{color:'#c3e88d'}}>'Nilay Singh'</span></>,
+                      <>    <span style={{color:'#f78c6c'}}>self</span>.<span style={{color:'#ffcb6b'}}>stack</span> = [<span style={{color:'#c3e88d'}}>'FastAPI'</span>, <span style={{color:'#c3e88d'}}>'GenAI'</span>, <span style={{color:'#c3e88d'}}>'RAG'</span>]</>,
+                      <>    <span style={{color:'#f78c6c'}}>self</span>.<span style={{color:'#ffcb6b'}}>cgpa</span>  = <span style={{color:'#c3e88d'}}>8.91</span></>,
+                      <>&nbsp;</>,
+                      <>  <span style={{color:'#c792ea'}}>def</span> <span style={{color:'#82aaff'}}>build</span>(<span style={{color:'#f78c6c'}}>self</span>, problem):</>,
+                      <>    <span style={{color:'#c792ea'}}>return</span> <span style={{color:'#82aaff'}}>solve</span>(problem, <span style={{color:'#ffcb6b'}}>tools</span>=<span style={{color:'#f78c6c'}}>self</span>.<span style={{color:'#ffcb6b'}}>stack</span>)</>,
+                      <>&nbsp;</>,
+                      <>me = <span style={{color:'#82aaff'}}>Engineer</span>()</>,
+                      <>me.<span style={{color:'#82aaff'}}>build</span>(<span style={{color:'#c3e88d'}}>'the future'</span>) <span style={{color:'#546e7a',fontStyle:'italic'}}># 🚀</span></>,
+                    ].map((line, i) => (
+                      <div key={i} style={{ display: 'flex', gap: '14px' }}>
+                        <span style={{ color: '#252525', minWidth: '18px', textAlign: 'right', fontSize: '11px', userSelect: 'none' }}>{i + 1}</span>
+                        <span>{line}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Footer */}
+                  <div style={{ padding: '10px 16px 14px', borderTop: '1px solid #1a1a1a', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#00e5a0', background: 'rgba(0,229,160,0.08)', border: '1px solid rgba(0,229,160,0.2)', borderRadius: '6px', padding: '4px 12px', cursor: 'pointer' }}>▶ Run</span>
+                    <span style={{ fontSize: '11px', color: '#333', fontFamily: 'monospace' }}>→ <span style={{ color: '#00e5a0' }}>"Building the future..."</span></span>
+                  </div>
+
                 </div>
               </div>
-              
-              {/* Background Ring */}
-              <div className="position-absolute top-50 start-50 translate-middle w-100 h-100 border border-teal opacity-10 rounded-circle" style={{zIndex: -1, transform: 'scale(1.2)'}}></div>
             </motion.div>
           </div>
 

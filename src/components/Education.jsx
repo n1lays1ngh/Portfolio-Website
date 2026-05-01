@@ -4,7 +4,7 @@ import { DATA } from '../data';
 
 const s = {
   section: { background: '#0a0a0a', padding: '80px 0', width: '100%' },
-  container: { maxWidth: '860px', margin: '0 auto', padding: '0 24px' },
+  container: { maxWidth: '1100px', margin: '0 auto', padding: '0 24px' },
   eyebrow: { fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#00e5a0', marginBottom: '6px', display: 'block' },
   title: { fontSize: '32px', fontWeight: 700, color: '#fff', marginBottom: '6px' },
   sub: { fontSize: '14px', color: '#555', marginBottom: '40px' },

@@ -17,7 +17,7 @@ const s = {
     width: '100%',
   },
   container: {
-    maxWidth: '860px',
+    maxWidth: '1100px',
     margin: '0 auto',
     padding: '0 24px',
   },

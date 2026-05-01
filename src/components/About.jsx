@@ -1,76 +1,162 @@
 import React from 'react';
-import { Download, ArrowRight } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { DATA } from '../data';
 
+const s = {
+  section: { background: '#0a0a0a', padding: '100px 0', width: '100%' },
+  container: { maxWidth: '1300px', margin: '0 auto', padding: '0 24px' },
+  grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' },
+
+  // Left
+  eyebrow: { display: 'inline-flex', alignItems: 'center', gap: '10px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#00e5a0', marginBottom: '1.2rem' },
+  eyebrowLine: { width: '28px', height: '1.5px', background: '#00e5a0', display: 'inline-block' },
+  headline: { fontSize: '38px', fontWeight: 800, color: '#fff', lineHeight: 1.2, marginBottom: '1.4rem' },
+  gradientSpan: { background: 'linear-gradient(90deg, #7c6fff, #00e5a0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' },
+  bodyText: { fontSize: '14px', color: '#666', lineHeight: 1.85, marginBottom: '1rem' },
+  strong: { color: '#aaa', fontWeight: 600 },
+  divider: { width: '40px', height: '2px', background: '#1e1e1e', margin: '1.4rem 0' },
+
+  // Stats
+  statRow: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '1.8rem' },
+  statBox: { background: '#131313', border: '1px solid #1e1e1e', borderRadius: '12px', padding: '14px 10px', textAlign: 'center' },
+  statNum: { fontSize: '22px', fontWeight: 800, color: '#fff', marginBottom: '3px' },
+  statAccent: { fontSize: '14px', color: '#00e5a0' },
+  statLabel: { fontSize: '10px', color: '#444', textTransform: 'uppercase', letterSpacing: '0.08em' },
+
+  // Buttons
+  btnRow: { display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', marginBottom: '1.4rem' },
+  btnPrimary: { display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#00e5a0', color: '#0a0a0a', fontSize: '13px', fontWeight: 700, padding: '11px 24px', borderRadius: '30px', textDecoration: 'none', border: 'none', cursor: 'pointer' },
+  btnGhost: { display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#555', fontSize: '13px', fontWeight: 500, textDecoration: 'none', background: 'none', border: 'none', cursor: 'pointer' },
+
+  // Skill tags
+  tagRow: { display: 'flex', flexWrap: 'wrap', gap: '6px' },
+  tag: { fontSize: '11px', padding: '4px 10px', borderRadius: '20px', background: '#131313', color: '#666', border: '1px solid #1e1e1e' },
+
+  // Right / image
+  imgWrap: { position: 'relative', maxWidth: '380px', margin: '0 auto' },
+  imgDeco1: { position: 'absolute', top: '20px', left: '20px', right: '-20px', bottom: '-20px', border: '1px solid rgba(0,229,160,0.12)', borderRadius: '20px', zIndex: 1 },
+  imgDeco2: { position: 'absolute', top: '40px', left: '40px', right: '-40px', bottom: '-40px', border: '1px solid rgba(124,111,255,0.08)', borderRadius: '20px', zIndex: 0 },
+  imgFrame: { borderRadius: '20px', overflow: 'hidden', aspectRatio: '4/5', background: '#131313', border: '1px solid #1e1e1e', position: 'relative', zIndex: 2 },
+  img: { width: '100%', height: '100%', objectFit: 'cover', display: 'block' },
+
+  // Floating cards
+  floatCard: { position: 'absolute', zIndex: 4, background: '#131313', border: '1px solid #232323', borderRadius: '12px', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: '10px' },
+  floatTL: { top: '-18px', left: '-18px' },
+  floatBR: { bottom: '-18px', right: '-18px' },
+  fcIconGreen: { width: '34px', height: '34px', borderRadius: '8px', background: 'rgba(0,229,160,0.1)', color: '#00e5a0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
+  fcIconPurple: { width: '34px', height: '34px', borderRadius: '8px', background: 'rgba(124,111,255,0.1)', color: '#9d8fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
+  fcLabel: { fontSize: '11px', fontWeight: 700, color: '#fff', marginBottom: '2px' },
+  fcSub: { fontSize: '10px', color: '#555' },
+};
+
+const STATS = [
+  { num: '8.91', accent: '/10', label: 'CGPA' },
+  {num:'2804',accent:' AIR',label:'GATE 2026 DA RANK'},
+  { num: '9',    accent: '+',   label: 'Projects' },
+  { num: '1',    accent: '+',   label: 'Research paper' },
+];
+
+const TAGS = ['Python', 'Machine Learning', 'FastAPI', 'LangChain', 'RAG Systems', 'NLP', 'Deep Learning'];
+
 const About = () => (
-  <section id="about" className="bg-dark-section py-6">
-    <div className="container">
-      <div className="row align-items-center gx-5">
-        
-        {/* LEFT: Text Content */}
-        <div className="col-lg-6 mb-5 mb-lg-0 order-2 order-lg-1">
-          <div className="d-inline-block mb-3">
-            <span className="text-teal fw-bold text-uppercase tracking-wide small border-bottom border-teal pb-1">
-              About Me
-            </span>
+  <section id="about" style={s.section}>
+    <div style={s.container}>
+      <div style={s.grid}>
+
+        {/* ── LEFT ── */}
+        <div>
+          <div style={s.eyebrow}>
+            <span style={s.eyebrowLine} />
+            About Me
           </div>
-          
-          <h2 className="display-5 fw-bold text-white mb-4">
-            Engineering the Future with <br />
-            <span className="text-gradient-purple-blue">Code & Data</span>
+
+          <h2 style={s.headline}>
+            Engineering the Future<br />
+            with <span style={s.gradientSpan}>Code &amp; Data</span>
           </h2>
-          
-          <p className="text-secondary lead mb-4" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
-            I am a pre-final year Computer Engineering undergraduate at <strong className="text-white">Thapar Institute of Engineering and Technology</strong>, driven by a passion for solving complex problems and building impactful solutions.
+
+          <p style={s.bodyText}>
+            Pre-final year Computer Engineering undergraduate at{' '}
+            <strong style={s.strong}>Thapar Institute of Engineering and Technology, Patiala</strong>{' '}
+            — driven by a passion for building things that actually matter.
           </p>
-          
-          <p className="text-secondary mb-5" style={{ lineHeight: '1.7' }}>
-            With a solid foundation in Python, I specialize in machine learning, NLP, and backend development using FastAPI. I believe that experience is the best teacher, and I constantly strive to learn from every challenge—whether it's a success or a setback. Beyond academics, I actively explore emerging technologies to grow both personally and professionally.
+          <p style={s.bodyText}>
+            I specialize in machine learning, NLP, and backend development using FastAPI.
+            Experience is my best teacher — I learn from every challenge, whether it's a
+            breakthrough or a setback. I actively explore emerging technologies to grow
+            both personally and professionally.
           </p>
-          
-          <div className="d-flex gap-3">
-            {/* <a 
-              href="/resume.pdf" 
-              download="Nilay_Singh_Resume.pdf"
-              className="btn btn-teal rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2"
-            >
-              Download CV <Download size={18} />
-            </a> */}
-            
-            <a href="#contact" className="btn btn-link text-white text-decoration-none d-inline-flex align-items-center gap-2 group-hover-move">
-              Let's Talk <ArrowRight size={18} className="transition-transform" />
+
+          <div style={s.divider} />
+
+          {/* Stats */}
+          <div style={s.statRow}>
+            {STATS.map((st, i) => (
+              <div key={i} style={s.statBox}>
+                <div style={s.statNum}>
+                  {st.num}<span style={s.statAccent}>{st.accent}</span>
+                </div>
+                <div style={s.statLabel}>{st.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Buttons */}
+          <div style={s.btnRow}>
+            <a href="#contact" style={s.btnPrimary}>
+              Let's Talk <ArrowRight size={15} />
             </a>
+            <a href="/resume.pdf" download="Nilay_Singh_Resume.pdf" style={s.btnGhost}>
+              <Download size={14} /> Download CV
+            </a>
+          </div>
+
+          {/* Tags */}
+          <div style={s.tagRow}>
+            {TAGS.map((tag, i) => (
+              <span key={i} style={s.tag}>{tag}</span>
+            ))}
           </div>
         </div>
 
-        {/* RIGHT: Image Content */}
-        <div className="col-lg-6 order-1 order-lg-2 mb-5 mb-lg-0">
-          <div className="position-relative mx-auto" style={{ maxWidth: '450px' }}>
-            {/* Main Image */}
-            <div className="ratio ratio-1x1 rounded-4 overflow-hidden shadow-lg position-relative z-2 border border-secondary border-opacity-10">
-              <img 
-                src={DATA.about.img} 
-                alt="Nilay Singh" 
-                className="object-fit-cover w-100 h-100 transition-transform hover-scale"
-              />
-            </div>
-            
-            {/* Decorative Background Elements */}
-            <div className="position-absolute top-0 start-0 w-100 h-100 border border-teal rounded-4 z-1" 
-                 style={{ transform: 'translate(20px, 20px)', opacity: 0.5 }}></div>
-            
-            {/* Floating Badge */}
-            {/* <div className="position-absolute bottom-0 end-0 z-3 bg-dark-card p-3 rounded-3 shadow-lg border border-secondary border-opacity-25 mb-4 me-n4 d-none d-md-block">
-              <div className="d-flex align-items-center gap-3">
-                <div className="bg-teal-light p-2 rounded-circle text-teal">
-                  <span className="fw-bold fs-4">2+</span>
-                </div>
-                <div className="text-white lh-1 text-start">
-                  <div className="fw-bold">Years of</div>
-                  <div className="small text-secondary">Experience</div>
-                </div>
+        {/* ── RIGHT ── */}
+        <div>
+          <div style={s.imgWrap}>
+            <div style={s.imgDeco1} />
+            <div style={s.imgDeco2} />
+
+            {/* Top-left card */}
+            <div style={{ ...s.floatCard, ...s.floatTL }}>
+              <div style={s.fcIconGreen}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
               </div>
-            </div> */}
+              <div>
+                <div style={s.fcLabel}>8.91 CGPA</div>
+                <div style={s.fcSub}>Thapar University</div>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div style={s.imgFrame}>
+              <img src={DATA.about.img} alt="Nilay Singh" style={s.img} />
+            </div>
+
+            {/* Bottom-right card */}
+            <div style={{ ...s.floatCard, ...s.floatBR }}>
+              <div style={s.fcIconPurple}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                </svg>
+              </div>
+              <div>
+                <div style={s.fcLabel}>Research Paper</div>
+                <div style={s.fcSub}>Green AI · In progress</div>
+              </div>
+            </div>
+
           </div>
         </div>
 
