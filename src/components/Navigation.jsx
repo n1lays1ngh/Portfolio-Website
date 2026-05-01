@@ -7,7 +7,7 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  const navItems = ['Home', 'About', 'Skills', 'Education', 'Experience', 'Projects', 'Certificates'];
+  const navItems = ['Home', 'About', 'Skills', 'Education', 'Experience',"Research", 'Projects', 'Certificates'];
 
   useEffect(() => {
     const handleScroll = () => {

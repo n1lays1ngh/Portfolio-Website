@@ -178,7 +178,44 @@ export const DATA = {
     demoUrl: null, 
     repoUrl: "https://github.com/n1lays1ngh/Superconductivity-Regression"
   }
+
 ],
+  research: [
+  {
+    title: "Green AI Cascade: Spectral Heuristics, Learned Saliency, and the Hidden Cost of Face Detection in Long-Form Video Pre-Filtering",
+    status: "In Progress",   // change to "Submitted" once you send to CVIP
+    venue: null,             // e.g. "CVIP 2026" after submission
+    year: "2026",
+    authors: [
+      "Nilay Singh",
+      "Adwik Gupta",
+      "Arun Singh Pundir",
+      "Mandeep Kaur"
+    ],
+    abstract: "This work investigates the use of YouTube audience retention heatmaps as an annotation-free behavioural ground truth for comedic highlight detection in long-form video. We propose the Green AI Cascade, a CPU-bound tiered pre-filtering architecture that eliminates informationally redundant video segments prior to expensive LVLM inference. Through a three-track experimental evaluation on 32 stand-up comedy videos (11.9 hours), we demonstrate that simple spectral heuristics outperform learned saliency models due to label compression effects. We further identify Haar cascade face detection as a major recall suppressor and introduce an optimised configuration achieving up to 71.1% recall with significant GPU workload reduction, enabling efficient and sustainable video analytics.",
+    tags: [
+      "Green AI",
+      "Video Analytics",
+      "Highlight Detection",
+      "Spectral Flux",
+      "LVLM",
+      "YouTube Heatmaps",
+      "Efficient ML"
+    ],
+    contributions: [
+      "Proposed the Green AI Cascade: a CPU-first tiered pre-filtering architecture for long-form video",
+      "Introduced YouTube Most Replayed heatmaps as an annotation-free behavioural ground truth",
+      "Conducted a 2,400-run grid search to analyse recall–pruning trade-offs using spectral heuristics",
+      "Demonstrated failure of learned saliency models due to label compression under cross-video normalization",
+      "Discovered that Haar cascade face detection suppresses recall by 18.6 percentage points",
+      "Identified NMS over-merging as a novel failure mode in fixed-window temporal detection systems",
+      "Optimised system achieving up to 71.1% recall with ~30–45% GPU workload reduction"
+    ],
+    paperUrl: "https://doi.org/10.5281/zenodo.19922714",   // add after arXiv / conference submission
+    repoUrl: "https://github.com/n1lays1ngh/Autoshorts-GreenAI"    // add if/when you publish code
+  }
+  ],
+
   certificates: [
     {
       title: "Supervised Machine Learning: Regression and Classification",
