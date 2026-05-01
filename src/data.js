@@ -86,7 +86,7 @@ export const DATA = {
   },
   experience: [
     {
-      role: "Executive Council Member",
+      role: "General Secretary",
       company: "SPICMACAY TIET",
       location: "Thapar Institute of Engineering & Technology, Patiala",
       period: "Sep 2023 - Present",
