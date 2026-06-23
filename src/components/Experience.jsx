@@ -4,10 +4,18 @@ import { DATA } from '../data';
 
 const initials = (name) => name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
 
-const EXP_STATS = [
+// Default stats fallback for SPICMACAY or general roles
+const DEFAULT_STATS = [
   { num: '2+', label: 'Years active' },
   { num: '500+', label: 'Event attendees' },
   { num: '10+',  label: 'Events led' },
+];
+
+// Custom stats specifically for your BEL AI Internship
+const BEL_STATS = [
+  { num: '92.12%', label: 'Association Accuracy' },
+  { num: '1.2M',   label: 'Model Parameters' },
+  { num: '0',      label: 'Track Fragmentations' },
 ];
 
 const s = {
@@ -63,7 +71,7 @@ const s = {
     border: '1px solid #2e2060',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justify: 'center',
     fontSize: '16px',
     fontWeight: 700,
     color: '#9d8fff',
@@ -198,78 +206,90 @@ const s = {
   },
 };
 
-const Experience = () => (
-  <section id="experience" style={s.section}>
-    <div style={s.container}>
-      <span style={s.eyebrow}>Career</span>
-      <h2 style={s.title}>Experience</h2>
-      <p style={s.sub}>Roles and responsibilities held beyond the classroom.</p>
+const Experience = () => {
+  return (
+    <section id="experience" style={s.section}>
+      <div style={s.container}>
+        <span style={s.eyebrow}>Career</span>
+        <h2 style={s.title}>Experience</h2>
+        <p style={s.sub}>Roles and responsibilities held beyond the classroom.</p>
 
-      {DATA.experience.map((exp, index) => (
-        <div key={index} style={s.card}>
+        {DATA.experience.map((exp, index) => {
+          // Dynamically switch stats based on the company or custom property
+          let currentStats = DEFAULT_STATS;
+          if (exp.company && exp.company.toLowerCase().includes('bel')) {
+            currentStats = BEL_STATS;
+          } else if (exp.stats) {
+            currentStats = exp.stats; // Alternatively allows loading directly from data.js
+          }
 
-          {/* Header */}
-          <div style={s.header}>
-            <div style={s.avatar}>{initials(exp.company)}</div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={s.role}>{exp.role}</div>
-              <div style={s.company}>{exp.company}</div>
-              <div style={s.metaRow}>
-                <span style={s.metaText}>
-                  <MapPin size={12} color="#555" /> {exp.location}
-                </span>
-                <span style={s.metaSep} />
-                <span style={s.metaText}>
-                  <Calendar size={12} color="#555" /> {exp.period}
-                </span>
-                <span style={s.metaSep} />
-                <span style={s.liveBadge}>
-                  <span style={s.liveDotStyle} /> Active
-                </span>
+          return (
+            <div key={index} style={s.card}>
+
+              {/* Header */}
+              <div style={s.header}>
+                <div style={s.avatar}>{initials(exp.company)}</div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={s.role}>{exp.role}</div>
+                  <div style={s.company}>{exp.company}</div>
+                  <div style={s.metaRow}>
+                    <span style={s.metaText}>
+                      <MapPin size={12} color="#555" /> {exp.location}
+                    </span>
+                    <span style={s.metaSep} />
+                    <span style={s.metaText}>
+                      <Calendar size={12} color="#555" /> {exp.period}
+                    </span>
+                    <span style={s.metaSep} />
+                    <span style={s.liveBadge}>
+                      <span style={s.liveDotStyle} /> Active
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          {/* Stats */}
-          <div style={s.statsGrid}>
-            {EXP_STATS.map((stat, i) => (
-              <div key={i} style={{ ...s.statBox, ...(i === 2 ? { borderRight: 'none' } : {}) }}>
-                <div style={s.statNum}>{stat.num}</div>
-                <div style={s.statLabel}>{stat.label}</div>
+              {/* Stats Grid - Now uses dynamic context */}
+              <div style={s.statsGrid}>
+                {currentStats.map((stat, i) => (
+                  <div key={i} style={{ ...s.statBox, ...(i === 2 ? { borderRight: 'none' } : {}) }}>
+                    <div style={s.statNum}>{stat.num}</div>
+                    <div style={s.statLabel}>{stat.label}</div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          {/* Body */}
-          <div style={s.body}>
-            <span style={s.sectionLabel}>Key responsibilities</span>
-            <ul style={s.respList}>
-              {exp.responsibilities.map((resp, i) => (
-                <li key={i} style={s.respItem}>
-                  <span style={s.checkWrap}>
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <polyline points="1.5,5 4,7.5 8.5,2"
-                        stroke="#00e5a0" strokeWidth="1.8"
-                        strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                  {resp}
-                </li>
-              ))}
-            </ul>
+              {/* Body */}
+              <div style={s.body}>
+                <span style={s.sectionLabel}>Key responsibilities</span>
+                <ul style={s.respList}>
+                  {exp.responsibilities.map((resp, i) => (
+                    <li key={i} style={s.respItem}>
+                      <span style={s.checkWrap}>
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                          <polyline points="1.5,5 4,7.5 8.5,2"
+                            stroke="#00e5a0" strokeWidth="1.8"
+                            strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      {resp}
+                    </li>
+                  ))}
+                </ul>
 
-            <span style={s.sectionLabel}>Skills demonstrated</span>
-            <div style={s.tagsRow}>
-              {exp.tags.map((tag, i) => (
-                <span key={i} style={s.tag}>{tag}</span>
-              ))}
+                <span style={s.sectionLabel}>Skills demonstrated</span>
+                <div style={s.tagsRow}>
+                  {exp.tags.map((tag, i) => (
+                    <span key={i} style={s.tag}>{tag}</span>
+                  ))}
+                </div>
+              </div>
+
             </div>
-          </div>
-
-        </div>
-      ))}
-    </div>
-  </section>
-);
+          );
+        })}
+      </div>
+    </section>
+  );
+};
 
 export default Experience;
