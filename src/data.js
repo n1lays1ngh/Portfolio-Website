@@ -90,6 +90,7 @@ export const DATA = {
       company: "BEL Central Research Laboratory",
       location: "Ghaziabad, India", 
       period: "June 2026 - July 2026", // Adjust the start date if necessary to match your exact timeline
+      logo: "/bel-logo.png",
       responsibilities: [
         "Researched and developed TADN (Transformer-Based Assignment Decision Network), a ~1.2M parameter deep learning model for Multi-Object Radar Tracking (MOT) in defense and Air Traffic Management environments.",
         "Designed a sequence-to-sequence architecture using Self-Attention to build a global picture of incoming radar detections (ASTERIX CAT48) and Cross-Attention to dynamically map active track states (ASTERIX CAT62), successfully resolving overlapping aircraft geometries.",
@@ -107,6 +108,7 @@ export const DATA = {
       company: "SPICMACAY TIET",
       location: "Thapar Institute of Engineering & Technology, Patiala",
       period: "Sep 2023 - Present",
+      logo: "/spicmacay-logo.png",
       responsibilities: [
         "Organized cultural events to promote Indian heritage and classical art forms on campus",
         "Led workshops and learning sessions focused on classical dance, music, and traditional art",

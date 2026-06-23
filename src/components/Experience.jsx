@@ -4,18 +4,11 @@ import { DATA } from '../data';
 
 const initials = (name) => name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
 
-// Default stats fallback for SPICMACAY or general roles
+// Default stats fallback for SPICMACAY or general campus roles
 const DEFAULT_STATS = [
   { num: '2+', label: 'Years active' },
   { num: '500+', label: 'Event attendees' },
   { num: '10+',  label: 'Events led' },
-];
-
-// Custom stats specifically for your BEL AI Internship
-const BEL_STATS = [
-  { num: '92.12%', label: 'Association Accuracy' },
-  { num: '1.2M',   label: 'Model Parameters' },
-  { num: '0',      label: 'Track Fragmentations' },
 ];
 
 const s = {
@@ -71,7 +64,7 @@ const s = {
     border: '1px solid #2e2060',
     display: 'flex',
     alignItems: 'center',
-    justify: 'center',
+    justifyContent: 'center',
     fontSize: '16px',
     fontWeight: 700,
     color: '#9d8fff',
@@ -215,12 +208,13 @@ const Experience = () => {
         <p style={s.sub}>Roles and responsibilities held beyond the classroom.</p>
 
         {DATA.experience.map((exp, index) => {
-          // Dynamically switch stats based on the company or custom property
+          // Identify if the entry belongs to BEL
+          const isBel = exp.company && exp.company.toLowerCase().includes('bel');
+          
+          // Determine stats configuration dynamically for other roles
           let currentStats = DEFAULT_STATS;
-          if (exp.company && exp.company.toLowerCase().includes('bel')) {
-            currentStats = BEL_STATS;
-          } else if (exp.stats) {
-            currentStats = exp.stats; // Alternatively allows loading directly from data.js
+          if (exp.stats) {
+            currentStats = exp.stats;
           }
 
           return (
@@ -228,7 +222,17 @@ const Experience = () => {
 
               {/* Header */}
               <div style={s.header}>
-                <div style={s.avatar}>{initials(exp.company)}</div>
+                <div style={s.avatar}>
+                  {exp.logo ? (
+                    <img 
+                      src={exp.logo} 
+                      alt={`${exp.company} logo`} 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} 
+                    />
+                  ) : (
+                    initials(exp.company)
+                  )}
+                </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={s.role}>{exp.role}</div>
                   <div style={s.company}>{exp.company}</div>
@@ -248,15 +252,17 @@ const Experience = () => {
                 </div>
               </div>
 
-              {/* Stats Grid - Now uses dynamic context */}
-              <div style={s.statsGrid}>
-                {currentStats.map((stat, i) => (
-                  <div key={i} style={{ ...s.statBox, ...(i === 2 ? { borderRight: 'none' } : {}) }}>
-                    <div style={s.statNum}>{stat.num}</div>
-                    <div style={s.statLabel}>{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+              {/* Stats Grid - Displays ONLY if it is not the BEL card */}
+              {!isBel && (
+                <div style={s.statsGrid}>
+                  {currentStats.map((stat, i) => (
+                    <div key={i} style={{ ...s.statBox, ...(i === 2 ? { borderRight: 'none' } : {}) }}>
+                      <div style={s.statNum}>{stat.num}</div>
+                      <div style={s.statLabel}>{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* Body */}
               <div style={s.body}>
