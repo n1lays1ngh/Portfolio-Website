@@ -86,6 +86,23 @@ export const DATA = {
   },
   experience: [
     {
+      role: "AI Engineering Intern",
+      company: "BEL Central Research Laboratory",
+      location: "Ghaziabad, India", 
+      period: "June 2026 - July 2026", // Adjust the start date if necessary to match your exact timeline
+      responsibilities: [
+        "Researched and developed TADN (Transformer-Based Assignment Decision Network), a ~1.2M parameter deep learning model for Multi-Object Radar Tracking (MOT) in defense and Air Traffic Management environments.",
+        "Designed a sequence-to-sequence architecture using Self-Attention to build a global picture of incoming radar detections (ASTERIX CAT48) and Cross-Attention to dynamically map active track states (ASTERIX CAT62), successfully resolving overlapping aircraft geometries.",
+        "Engineered a dynamic 'Null Sink' routing mechanism integrated with a deterministic Kalman Filter initializer to seamlessly handle false alarms, clutter, and spontaneous new track originations.",
+        "Implemented a 3-Phase Progressive Curriculum training strategy ('Vanilla Sky', 'Clutter Storm', and 'Full Stress Test') that simulated severe latency dropouts (up to 3.5s) and extreme positional noise (σ=140m).",
+        "Achieved a 92.12% data association accuracy on an out-of-distribution holdout dataset, completely outperforming classical Global Nearest Neighbor (GNN) baselines by reducing track fragmentation from 527 to 0 with 0% false alarm leakage.",
+        "Built a production-ready data pipeline ('OpenSkyHistoricalTensorizer') in Python to ingest raw geodetic flight logs, convert them to local Cartesian coordinates, and synthetically tensorize radar distortion characteristics.",
+        "Developed an enterprise-grade local document ingestion RAG (Retrieval-Augmented Generation) chatbot, optimizing traditional retrieval architectures by introducing Chain-of-Thought (CoT) prompting to maximize contextual reasoning efficiency."
+      ],
+      tags: ["PyTorch", "Transformers", "Deep Learning", "Radar Tracking (MOT)", "Kalman Filters", "LLMs / RAG", "Python"]
+    },
+    {
+
       role: "General Secretary",
       company: "SPICMACAY TIET",
       location: "Thapar Institute of Engineering & Technology, Patiala",
@@ -97,6 +114,7 @@ export const DATA = {
       ],
       tags: ["Leadership", "Event Management", "Public Relations", "Team Coordination"]
     }
+
 
     
   ],
