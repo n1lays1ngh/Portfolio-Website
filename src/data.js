@@ -122,6 +122,32 @@ export const DATA = {
   ],
   projects: [
   // --- EXISTING PROJECTS ---
+
+  {
+    title: "SoulTune",
+    description: "A full-stack AI audio analysis pipeline that extracts DSP features via Librosa, classifies genre with XGBoost, generates a poetic profile via Gemini LLM, and renders a living generative mandala — mathematically unique to every song.",
+    tags: ["Python", "FastAPI", "React", "Vite", "Librosa", "XGBoost", "Gemini API", "p5.js", "Framer Motion"],
+    img: "/SoulTune-logo.png",
+    demoUrl: "https://soul-tune-omega.vercel.app/",
+    repoUrl: "https://github.com/n1lays1ngh/SoulTune"
+  },
+  {
+    title: "TADN — Transformer Radar Tracker",
+    description: "A ~1.2M parameter Transformer architecture for multi-object radar tracking in complex airspace. Replaces classical GNN heuristics with global cross-attention over ASTERIX CAT48/62 data, achieving 92.12% association accuracy with zero track fragmentations against 527 for the classical baseline.",
+    tags: ["Python", "PyTorch", "Transformers", "Radar Systems", "FastAPI", "React", "Docker", "Deep Learning"],
+    img: "/tadn.png",
+    demoUrl: "https://huggingface.co/spaces/Nilay31Singh/TADN-radar_association",
+    repoUrl: "https://github.com/n1lays1ngh/TADN-for-Radar-Data-Association"
+  },
+  {
+    title: "PomoFlow",
+    description: "PomoFlow is a minimal, beautiful Pomodoro timer built for people who take deep work seriously. No accounts, no subscriptions, no bloat — just you, a countdown, and a streak worth protecting.",
+    tags: ["React", "Vite", "JavaScript", "CSS", "Web Audio API", "Chart.js", "Productivity", "Web App","Frontend"],
+    img: "/pomo-flow.png",
+    demoUrl: "https://pomoflow-black.vercel.app/",
+    repoUrl: "https://github.com/n1lays1ngh/PomoFlow"
+  },
+
   {
     title: "Mental-Health-Predictor-App",
     description: "A Streamlit app that predicts an individual’s need for mental health treatment using CatBoost, with a focus on interpretability and user-friendly insights.",
