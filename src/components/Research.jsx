@@ -7,253 +7,273 @@ const Research = () => {
   const [expandedIdx, setExpandedIdx] = useState(null);
 
   const statusColors = {
-    "In Progress":  { bg: "rgba(251,191,36,0.12)",  border: "rgba(251,191,36,0.35)",  text: "#fbbf24" },
-    "Submitted":    { bg: "rgba(96,165,250,0.12)",   border: "rgba(96,165,250,0.35)",  text: "#60a5fa" },
-    "Published":    { bg: "rgba(0,210,180,0.12)",    border: "rgba(0,210,180,0.35)",   text: "#00d2b4" },
+    'In Progress': { bg: 'rgba(198,156,54,0.12)', border: 'rgba(198,156,54,0.35)', text: '#D4AE52' },
+    'Accepted to CVIP': { bg: 'rgba(198,156,54,0.08)', border: 'rgba(198,156,54,0.22)', text: '#C69C36' },
+    'Published': { bg: 'rgba(16,185,129,0.10)', border: 'rgba(16,185,129,0.30)', text: '#10b981' },
   };
 
   return (
-    <section id="research" className="bg-dark-section">
+    <section id="research" style={{ background: '#0d0d0d', padding: '110px 0', position: 'relative', overflow: 'hidden' }}>
+      {/* Gold background glow */}
+      <div style={{
+        position: 'absolute', top: '20%', right: '-60px',
+        width: '360px', height: '360px',
+        background: 'radial-gradient(circle, rgba(198,156,54,0.07) 0%, transparent 70%)',
+        filter: 'blur(55px)', pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', bottom: '10%', left: '-50px',
+        width: '280px', height: '280px',
+        background: 'radial-gradient(circle, rgba(198,156,54,0.05) 0%, transparent 70%)',
+        filter: 'blur(50px)', pointerEvents: 'none',
+      }} />
+
       <style>{`
-        /* ---- Research Card ---- */
-        .research-card {
-          background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
-          border: 1px solid rgba(255,255,255,0.08);
+        /* Card */
+        .rs-card {
+          background: #141414;
+          border: 1px solid rgba(255,255,255,0.07);
           border-radius: 18px;
           overflow: hidden;
           transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
           position: relative;
         }
-        .research-card:hover {
-          border-color: rgba(0,210,180,0.2);
-          box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5), 0 0 30px -10px rgba(0,210,180,0.08);
+        .rs-card:hover {
+          border-color: rgba(198,156,54,0.28);
+          box-shadow: 0 20px 50px -15px rgba(0,0,0,0.5), 0 0 30px rgba(198,156,54,0.07);
         }
 
-        /* ---- Accent top-bar ---- */
-        .research-card-accent {
-          height: 3px;
-          background: linear-gradient(90deg, #00d2b4, rgba(0,210,180,0.0));
+        /* Gold top accent bar */
+        .rs-accent-bar {
+          height: 2px;
+          background: linear-gradient(90deg, #C69C36, rgba(198,156,54,0));
           width: 0;
           transition: width 0.5s ease;
         }
-        .research-card:hover .research-card-accent { width: 100%; }
+        .rs-card:hover .rs-accent-bar { width: 100%; }
 
-        /* ---- Status badge ---- */
-        .status-badge {
-          font-size: 0.68rem;
+        /* Status badge */
+        .rs-status {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
           font-weight: 700;
-          letter-spacing: 1.2px;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           padding: 4px 12px;
-          border-radius: 20px;
+          border-radius: 100px;
         }
 
-        /* ---- Number ---- */
-        .research-number {
-          font-size: 3.5rem;
+        /* Faint bg index number */
+        .rs-num {
+          font-size: 4rem;
           font-weight: 800;
-          color: rgba(255,255,255,0.04);
+          color: rgba(255,255,255,0.03);
           line-height: 1;
           user-select: none;
           position: absolute;
-          top: 20px;
-          right: 24px;
-          font-family: monospace;
+          top: 18px; right: 22px;
+          font-family: 'Playfair Display', serif;
+          pointer-events: none;
         }
 
-        /* ---- Tags ---- */
-        .research-tag {
-          font-size: 0.68rem;
-          padding: 3px 9px;
-          border-radius: 20px;
-          background: rgba(0,210,180,0.08);
-          color: #00d2b4;
-          border: 1px solid rgba(0,210,180,0.18);
+        /* Tags */
+        .rs-tag {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          padding: 3px 10px;
+          border-radius: 100px;
+          background: rgba(198,156,54,0.09);
+          color: #D4AE52;
+          border: 1px solid rgba(198,156,54,0.22);
         }
 
-        /* ---- Expand toggle ---- */
-        .expand-btn {
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 8px;
-          color: #9ca3af;
-          font-size: 0.78rem;
-          padding: 6px 14px;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          transition: all 0.2s ease;
-        }
-        .expand-btn:hover {
-          background: rgba(255,255,255,0.1);
-          color: #fff;
-          border-color: rgba(255,255,255,0.2);
-        }
-
-        /* ---- Link button ---- */
-        .research-link-btn {
-          font-size: 0.78rem;
-          padding: 6px 16px;
-          border-radius: 20px;
-          border: 1px solid rgba(0,210,180,0.3);
-          color: #00d2b4;
-          background: rgba(0,210,180,0.06);
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
-          text-decoration: none;
-          transition: all 0.2s ease;
-        }
-        .research-link-btn:hover {
-          background: rgba(0,210,180,0.14);
-          color: #00d2b4;
-          border-color: rgba(0,210,180,0.5);
-        }
-
-        /* ---- Contribution list ---- */
-        .contribution-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 10px;
-          font-size: 0.85rem;
-          color: #d1d5db;
-          margin-bottom: 8px;
-        }
-        .contribution-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: #00d2b4;
-          margin-top: 6px;
-          flex-shrink: 0;
-        }
-
-        /* ---- Section Icon ---- */
-        .research-section-icon {
-          width: 42px;
-          height: 42px;
-          border-radius: 12px;
-          background: rgba(0,210,180,0.1);
-          border: 1px solid rgba(0,210,180,0.2);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #00d2b4;
-        }
-
-        /* ---- Venue chip ---- */
-        .venue-chip {
-          font-size: 0.72rem;
-          color: #9ca3af;
-          background: rgba(255,255,255,0.05);
+        /* Venue chip */
+        .rs-venue {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10.5px;
+          color: rgba(255,255,255,0.35);
+          background: rgba(255,255,255,0.04);
           border: 1px solid rgba(255,255,255,0.08);
           border-radius: 6px;
           padding: 3px 10px;
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+        }
+
+        /* Expand toggle */
+        .rs-expand-btn {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          background: rgba(198,156,54,0.07);
+          border: 1px solid rgba(198,156,54,0.2);
+          border-radius: 8px;
+          color: #C69C36;
+          padding: 7px 16px;
+          cursor: pointer;
+          display: inline-flex; align-items: center; gap: 6px;
+          transition: all 0.2s;
+        }
+        .rs-expand-btn:hover { background: rgba(198,156,54,0.14); border-color: rgba(198,156,54,0.4); }
+
+        /* Link button */
+        .rs-link-btn {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          padding: 7px 16px;
+          border-radius: 100px;
+          border: 1px solid rgba(198,156,54,0.28);
+          color: #C69C36;
+          background: rgba(198,156,54,0.06);
+          display: inline-flex; align-items: center; gap: 5px;
+          text-decoration: none;
+          transition: all 0.2s;
+        }
+        .rs-link-btn:hover { background: rgba(198,156,54,0.15); border-color: rgba(198,156,54,0.5); color: #E8CC7A; }
+
+        .rs-link-btn-ghost {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          padding: 7px 16px;
+          border-radius: 100px;
+          border: 1px solid rgba(255,255,255,0.1);
+          color: rgba(255,255,255,0.4);
+          background: rgba(255,255,255,0.03);
+          display: inline-flex; align-items: center; gap: 5px;
+          text-decoration: none;
+          transition: all 0.2s;
+        }
+        .rs-link-btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: #fff; }
+
+        /* Contribution panel */
+        .rs-contrib-panel {
+          background: rgba(198,156,54,0.04);
+          border: 1px solid rgba(198,156,54,0.12);
+          border-radius: 12px;
+          padding: 18px;
+          margin-bottom: 20px;
+        }
+        .rs-contrib-label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 9.5px; font-weight: 700;
+          letter-spacing: 0.14em; text-transform: uppercase;
+          color: #C69C36; margin-bottom: 12px;
+        }
+        .rs-contrib-item {
+          display: flex; align-items: flex-start; gap: 10px;
+          font-family: 'Inter', sans-serif;
+          font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 9px; line-height: 1.65;
+        }
+        .rs-contrib-dot {
+          width: 5px; height: 5px; border-radius: 50%;
+          background: #C69C36; margin-top: 7px; flex-shrink: 0;
         }
       `}</style>
 
-      <div className="container">
-        {/* ---- Header ---- */}
-        <div className="text-center mb-5">
-          <div className="d-flex align-items-center justify-content-center gap-3 mb-3">
-            <div className="research-section-icon">
-              <FlaskConical size={20} />
+      <div className="container" style={{ maxWidth: '1200px' }}>
+        {/* Header */}
+        <div style={{ marginBottom: '3.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem' }}>
+            <div style={{
+              width: '40px', height: '40px', borderRadius: '10px',
+              background: 'rgba(198,156,54,0.1)', border: '1px solid rgba(198,156,54,0.25)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#C69C36',
+            }}>
+              <FlaskConical size={18} />
             </div>
+            <div className="overline">Research</div>
           </div>
-          <h2 className="fw-bold text-white">Research</h2>
-          <p className="text-secondary">Original contributions to the field of AI and sustainable computing.</p>
+          <h2 className="section-heading">Research Work</h2>
+          <p className="section-sub">Original contributions to the field of AI and Computer Science.</p>
         </div>
 
-        {/* ---- Research Cards ---- */}
-        <div className="d-flex flex-column gap-4">
+        {/* Cards */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {DATA.research.map((paper, idx) => {
-            const sc = statusColors[paper.status] || statusColors["In Progress"];
+            const sc = statusColors[paper.status] || statusColors['In Progress'];
             const isExpanded = expandedIdx === idx;
 
             return (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.12 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="research-card">
-                  <div className="research-card-accent" />
+                <div className="rs-card">
+                  <div className="rs-accent-bar" />
+                  <div style={{ padding: '28px 30px', position: 'relative' }}>
+                    <span className="rs-num">{String(idx + 1).padStart(2, '0')}</span>
 
-                  <div className="p-4 p-md-5 position-relative">
-                    <span className="research-number">{String(idx + 1).padStart(2, '0')}</span>
-
-                    {/* ---- Top Row ---- */}
-                    <div className="d-flex flex-wrap align-items-center gap-2 mb-3">
-                      <span
-                        className="status-badge"
-                        style={{ background: sc.bg, border: `1px solid ${sc.border}`, color: sc.text }}
-                      >
+                    {/* Top row: status + venue + year */}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+                      <span className="rs-status" style={{ background: sc.bg, border: `1px solid ${sc.border}`, color: sc.text }}>
                         {paper.status}
                       </span>
                       {paper.venue && (
-                        <span className="venue-chip">
-                          <BookOpen size={11} style={{ marginRight: 4, verticalAlign: 'middle' }} />
-                          {paper.venue}
+                        <span className="rs-venue">
+                          <BookOpen size={10} /> {paper.venue}
                         </span>
                       )}
-                      {paper.year && (
-                        <span className="venue-chip">{paper.year}</span>
-                      )}
+                      {paper.year && <span className="rs-venue">{paper.year}</span>}
                     </div>
 
-                    {/* ---- Title ---- */}
-                    <h4 className="text-white fw-bold mb-2" style={{ fontSize: '1.15rem', lineHeight: 1.4, maxWidth: '85%' }}>
+                    {/* Title */}
+                    <h3 style={{
+                      fontFamily: "'Playfair Display', serif",
+                      fontSize: 'clamp(1.1rem, 2.5vw, 1.35rem)',
+                      fontWeight: 700, color: '#fff',
+                      lineHeight: 1.35, marginBottom: '10px',
+                      maxWidth: '80%',
+                    }}>
                       {paper.title}
-                    </h4>
+                    </h3>
 
-                    {/* ---- Authors ---- */}
-                    <p className="mb-3" style={{ fontSize: '0.82rem', color: '#6b7280' }}>
+                    {/* Authors */}
+                    <p style={{ fontSize: '12.5px', color: 'rgba(255,255,255,0.35)', marginBottom: '14px', fontFamily: "'Inter', sans-serif" }}>
                       {paper.authors.map((author, i) => (
                         <span key={i}>
-                          {author === "Nilay Singh"
-                            ? <strong style={{ color: '#9ca3af' }}>{author}</strong>
+                          {author === 'Nilay Singh'
+                            ? <strong style={{ color: '#C69C36', fontWeight: 600 }}>{author}</strong>
                             : author}
                           {i < paper.authors.length - 1 ? ', ' : ''}
                         </span>
                       ))}
                     </p>
 
-                    {/* ---- Abstract ---- */}
-                    <p style={{ fontSize: '0.88rem', color: '#9ca3af', lineHeight: 1.65, maxWidth: '80%' }}>
+                    {/* Abstract */}
+                    <p style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: '13.5px', color: 'rgba(255,255,255,0.42)',
+                      lineHeight: 1.72, marginBottom: '18px', maxWidth: '78%',
+                    }}>
                       {paper.abstract}
                     </p>
 
-                    {/* ---- Tags ---- */}
-                    <div className="d-flex flex-wrap gap-2 mt-3 mb-4">
+                    {/* Tags */}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
                       {paper.tags.map((tag, i) => (
-                        <span key={i} className="research-tag">{tag}</span>
+                        <span key={i} className="rs-tag">{tag}</span>
                       ))}
                     </div>
 
-                    {/* ---- Expandable: Contributions ---- */}
+                    {/* Expandable contributions */}
                     <AnimatePresence>
                       {isExpanded && (
                         <motion.div
-                          key="contributions"
+                          key="contrib"
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
                           style={{ overflow: 'hidden' }}
                         >
-                          <div
-                            className="mb-4 p-3 rounded-3"
-                            style={{ background: 'rgba(0,210,180,0.04)', border: '1px solid rgba(0,210,180,0.1)' }}
-                          >
-                            <p className="mb-3" style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#00d2b4' }}>
-                              My Contributions
-                            </p>
+                          <div className="rs-contrib-panel">
+                            <div className="rs-contrib-label">My Contributions</div>
                             {paper.contributions.map((c, i) => (
-                              <div key={i} className="contribution-item">
-                                <div className="contribution-dot" />
+                              <div key={i} className="rs-contrib-item">
+                                <div className="rs-contrib-dot" />
                                 <span>{c}</span>
                               </div>
                             ))}
@@ -262,25 +282,25 @@ const Research = () => {
                       )}
                     </AnimatePresence>
 
-                    {/* ---- Actions ---- */}
-                    <div className="d-flex flex-wrap align-items-center gap-3">
+                    {/* Actions */}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
                       <button
-                        className="expand-btn"
+                        className="rs-expand-btn"
                         onClick={() => setExpandedIdx(isExpanded ? null : idx)}
                       >
-                        {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                        {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
                         {isExpanded ? 'Hide' : 'My Contributions'}
                       </button>
 
                       {paper.paperUrl && (
-                        <a href={paper.paperUrl} target="_blank" rel="noopener noreferrer" className="research-link-btn">
-                          <ExternalLink size={13} /> View Paper
+                        <a href={paper.paperUrl} target="_blank" rel="noopener noreferrer" className="rs-link-btn">
+                          <ExternalLink size={12} /> View Paper
                         </a>
                       )}
 
                       {paper.repoUrl && (
-                        <a href={paper.repoUrl} target="_blank" rel="noopener noreferrer" className="research-link-btn" style={{ borderColor: 'rgba(255,255,255,0.15)', color: '#d1d5db', background: 'rgba(255,255,255,0.04)' }}>
-                          <ArrowRight size={13} /> Codebase
+                        <a href={paper.repoUrl} target="_blank" rel="noopener noreferrer" className="rs-link-btn-ghost">
+                          <ArrowRight size={12} /> Codebase
                         </a>
                       )}
                     </div>

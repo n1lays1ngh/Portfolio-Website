@@ -6,10 +6,10 @@ import { DATA } from '../data';
 const IconMap = { Brain, Server, Cpu, Sigma };
 
 const domainMeta = [
-  { accent: '#0ef0b0' },
-  { accent: '#38bdf8' },
-  { accent: '#a78bfa' },
-  { accent: '#fb923c' },
+  { accent: '#C69C36' },
+  { accent: '#D4AE52' },
+  { accent: '#E8CC7A' },
+  { accent: '#f59e0b' },
 ];
 
 const CoursePill = ({ name }) => {
@@ -21,7 +21,7 @@ const CoursePill = ({ name }) => {
       style={{
         fontSize: 'clamp(0.85rem, 1.8vw, 1.05rem)',
         fontWeight: hovered ? 600 : 400,
-        color: hovered ? '#0ef0b0' : 'rgba(255,255,255,0.45)',
+        color: hovered ? '#C69C36' : 'rgba(255,255,255,0.45)',
         cursor: 'default',
         transition: 'color 0.2s, font-weight 0.15s',
         whiteSpace: 'nowrap',
@@ -37,19 +37,23 @@ const Skills = () => {
   const toggle = (i) => setActiveIndex(prev => (prev === i ? null : i));
 
   return (
-    <section id="skills" className="bg-dark-section overflow-hidden py-5">
+    <section id="skills" style={{ background: '#0f0f0f', padding: '110px 0', position: 'relative', overflow: 'hidden' }}>
+      {/* Gold background accents */}
+      <div style={{ position: 'absolute', top: '5%', left: '-60px', width: '350px', height: '350px', background: 'radial-gradient(circle, rgba(198,156,54,0.07) 0%, transparent 70%)', filter: 'blur(55px)', pointerEvents: 'none', zIndex: 0 }} />
+      <div style={{ position: 'absolute', bottom: '10%', right: '-60px', width: '280px', height: '280px', background: 'radial-gradient(circle, rgba(198,156,54,0.05) 0%, transparent 70%)', filter: 'blur(50px)', pointerEvents: 'none', zIndex: 0 }} />
       <div className="container">
 
         {/* ── Header ── */}
-        <div className="text-center mb-5">
+        <div className="text-center" style={{ marginBottom: '4rem' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="fw-bold text-white">Skills</h2>
-            <p className="text-secondary">A breakdown of my engineering capabilities and theoretical foundations.</p>
+            <div className="overline" style={{ justifyContent: 'center', marginBottom: '0.8rem' }}>Technical Skills</div>
+            <h2 className="section-heading">Engineering Competencies</h2>
+            <p className="section-sub">A breakdown of my capabilities and theoretical foundations.</p>
           </motion.div>
         </div>
 
@@ -244,7 +248,7 @@ const Skills = () => {
           style={{ marginBottom: '4.5rem' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-            <BookOpen size={14} style={{ color: '#0ef0b0' }} />
+            <BookOpen size={14} style={{ color: '#C69C36' }} />
             <span style={{
               fontFamily: 'monospace',
               fontSize: '0.62rem',
@@ -287,7 +291,7 @@ const Skills = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <Globe size={14} style={{ color: '#38bdf8' }} />
+            <Globe size={14} style={{ color: '#D4AE52' }} />
             <span style={{
               fontFamily: 'monospace',
               fontSize: '0.62rem',
@@ -308,7 +312,7 @@ const Skills = () => {
                   fontWeight: 800,
                   letterSpacing: '-0.04em',
                   lineHeight: 1,
-                  color: i === 0 ? '#38bdf8' : 'rgba(255,255,255,0.75)',
+                  color: i === 0 ? '#C69C36' : 'rgba(255,255,255,0.75)',
                   marginBottom: '0.4rem',
                 }}>
                   {lang.name}
@@ -333,3 +337,4 @@ const Skills = () => {
 };
 
 export default Skills;
+
