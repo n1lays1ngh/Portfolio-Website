@@ -10,14 +10,14 @@ const GithubIcon = ({ size = 16 }) => (
 );
 
 // The 4 featured projects to show in zigzag
-const ZIGZAG_TITLES = ['TADN — Transformer Radar Tracker', "Delhi Air Quality Prediction", "KHABRI — The All-In-One News Agent", 'SoulTune'];
+const ZIGZAG_TITLES = ['TADN — Transformer Radar Tracker', "Delhi Air Quality Prediction", 'KHABRI-The all in one news agent', 'SoulTune'];
 const ALL_CATEGORIES = ['All', 'Machine Learning', 'GenAI', 'Web Apps', 'Data Science'];
 
 /* ─── Floating dark mockup card for zigzag image slot ─── */
 const ProjectMockup = ({ project }) => {
   const isEven = ZIGZAG_TITLES.indexOf(project.title) % 2 === 1;
   return (
-    <div style={{ position: 'relative', padding: '1.5rem' }}>
+    <div style={{ position: 'relative', padding: '1.5rem', width: '100%', boxSizing: 'border-box' }}>
       {/* Glow behind the card */}
       <div style={{
         position: 'absolute',
@@ -33,7 +33,7 @@ const ProjectMockup = ({ project }) => {
       <div style={{
         background: '#141414',
         border: '1px solid rgba(255,255,255,0.08)',
-        borderRadius: '10px',
+        borderRadius: '18px',
         overflow: 'hidden',
         boxShadow: '0 24px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(198,156,54,0.12)',
         position: 'relative',
@@ -49,11 +49,12 @@ const ProjectMockup = ({ project }) => {
           <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ffbd2e' }} />
           <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#28ca42' }} />
           <div style={{
-            flex: 1, marginLeft: '8px',
+            flex: 1, minWidth: 0, marginLeft: '8px',
             background: 'rgba(255,255,255,0.04)', borderRadius: '6px',
             padding: '4px 10px', fontSize: '11px',
             fontFamily: "'JetBrains Mono', monospace",
             color: 'rgba(255,255,255,0.2)',
+            whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
           }}>
             {project.demoUrl ? project.demoUrl.replace('https://', '') : project.title.toLowerCase().replace(/\s/g, '-')}
           </div>
@@ -156,6 +157,10 @@ const Projects = () => {
           gap: 4rem;
           align-items: center;
           margin-bottom: 6rem;
+          min-width: 0;
+        }
+        .zz-row > * {
+          min-width: 0;
         }
         .zz-row.zz-reverse .zz-img  { order: 2; }
         .zz-row.zz-reverse .zz-text { order: 1; }
